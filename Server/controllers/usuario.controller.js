@@ -6,30 +6,29 @@ dotenv.config();
 const config = {
   user: process.env.oracleUser,
   password: process.env.oraclePassword,
-  connectString: 'localhost:1521/xe'
+  connectString: process.env.stringConnection
 };
 
-async function getData(req, res) {
+async function getRoles(req, res) {
   let conn
   let result
 
   try {
     conn = await oracledb.getConnection(config)
-    console.log("Se realizo una solicitud a la base de datos")
-    result = await conn.execute("select * from estudiante")
+    result = await conn.execute("select * from rol")
 
   } catch (err) {
-    console.log('Ouch!', err)
+    console.log('Ouch!', err  )
   } finally {
     if (conn) {
       await conn.close()
     }
   }
   if(result.rows.length == 0) {
-      return res.send("No se obtuvo nada")
+      return res.status(400).send("Error roles no recuperados")
   } else {
       return res.json(result.rows)
   }
 }
 
-export default {getData};
+export { getRoles };

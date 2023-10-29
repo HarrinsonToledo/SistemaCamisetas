@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { NarvarComponent } from './components/narvar/narvar.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NarvarComponent
+    NarvarComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

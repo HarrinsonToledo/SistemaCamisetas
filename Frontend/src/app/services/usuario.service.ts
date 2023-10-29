@@ -1,22 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Persona } from '../interfaces/Persona';
+import { Usuario } from '../interfaces/Usuario';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PersonaService {
+export class UserService {
   private myApiUrl: string
   private myAppUrl: string
+  private getRol: string
 
   constructor(private http: HttpClient) { 
-    this.myApiUrl = '/persona';
+    this.myApiUrl = '/user';
     this.myAppUrl = environment.endpoint;
+    this.getRol = '/roles'
   }
 
-  getPersonas(): Observable<Persona[]> {
-    return this.http.get<Persona[]>(`${this.myAppUrl}${this.myApiUrl}`)
+  getUser(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${this.myAppUrl}${this.myApiUrl}${this.getRol}`)
   }
 }
