@@ -46,9 +46,46 @@
     </div>
     <div class="ms-auto pe-3">
         <li class="nav-item active">
-            <a class="nav-link color-text" routerLink="/">
+            <a class="nav-link color-text" routerLink="/" (click)="openMCenter(contenido)">
                 <img class="rounded-5" src="https://e7.pngegg.com/pngimages/290/416/png-clipart-online-shopping-retail-handbag-others-miscellaneous-retail-thumbnail.png" width="50" height="50" alt="">
             </a>
         </li>
     </div>
 </nav>
+<hr>
+<ng-template #contenido let-modal>
+    <div class="modal-header">
+        <h4 class="model-title">Tu Carrito</h4>
+        <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="mb-auto modal-body">
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cancelar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of rango">
+                    <th scope="row">{{i}}</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="cambiarPrecio(i)">&times;</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <h4 class="me-auto modal-title">Precio Total: {{valorTotal}}</h4>
+        <button type="button" class="btn btn-success">Pagar</button>
+    </div>
+</ng-template>

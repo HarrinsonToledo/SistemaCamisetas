@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-
-<div class="container">
+<form class="needs-validation" id="Formulario" novalidate [formGroup]="F">
+  <div class="container">
     <div class="links">
       <a routerLink="/login" class="link">¡Ya tengo una cuenta!</a>
       <a routerLink="/register" class="link">¡Soy nuevo!</a>      
@@ -13,14 +8,12 @@
 
   <div class="input-container">
     <img src="https://cdn.icon-icons.com/icons2/2483/PNG/512/user_icon_149851.png" class="icon" alt="icono de usuario">
-    <input type="text" placeholder="Username">
+    <input type="text" placeholder="Username" formControlName="User">
   </div>
   <div class="input-container">
     <img src="https://cdn.icon-icons.com/icons2/37/PNG/512/password_3715.png" class="icon" alt="icono de contraseña">
-    <input type="password" placeholder="Password">
+    <input type="password" placeholder="Password" formControlName="Password">
   </div>
-  <button onclick="">Continuar</button>
+  <button [disabled]="!Formulario.valid">Continuar</button>
 </div>
-
-</body>
-</html>
+</form>

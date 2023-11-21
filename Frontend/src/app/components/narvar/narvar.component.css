@@ -19,3 +19,27 @@
 .input-r {
     border-radius: 20px !important;
 }
+
+.container {
+    display: flex;
+    overflow: auto;
+    height: 20em;
+}
+
+.container::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.container::-webkit-scrollbar:vertical {
+    width:0px;
+}
+
+.container thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+th, td {
+    padding: 8px 16px;
+}

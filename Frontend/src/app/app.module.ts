@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { NarvarComponent } from './components/narvar/narvar.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { McarritoComponent } from './components/models/mcarrito/mcarrito.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
@@ -16,7 +15,6 @@ import { RegisterComponent } from './components/register/register.component';
     AppComponent,
     NarvarComponent,
     InicioComponent,
-    McarritoComponent,
     LoginComponent,
     RegisterComponent
   ],
