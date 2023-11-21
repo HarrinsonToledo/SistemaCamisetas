@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark redimen" id="navbar">
-    <a class="navbar-brand" href="#">
-        <img src="https://laud.udistrital.edu.co/sites/default/files/logo_ud.png" width="90" height="70" alt="">
+    <a class="navbar-brand mover" href="#">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzWnLxXPzMfQndkyVwLpuX8NNhXB2j51URcbPdzVUirKvq9DuvpPSQts8l8dnzEsmNX-M&usqp=CAU" width="40" height="35" alt="">
       </a>
     <a class="navbar-brand" routerLink="/"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -9,21 +9,46 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav pr-10">
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/">Inicio</a>
+                <a class="nav-link color-text" routerLink="/">Hombre</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link"  routerLink="/formEstudiantes">Formulario Estudiantes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"  routerLink="/listEstudiantes">Listado Estudiantes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"  routerLink="/login">Admin</a>
-            </li>
-            <li class="nav-item">
+            <li class="nav-item active">
+                <a class="nav-link color-text" routerLink="/">Mujer</a>
             </li>
         </ul>
+        <div class="wi mx-auto">
+            <div>
+                <h3 class="color-text">ShirtDesigns</h3>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <img class="rounded-start-2" src="https://st2.depositphotos.com/4060975/8056/v/450/depositphotos_80565476-stock-illustration-magnifier-vector-icon.jpg" width="38" height="38" alt="">
+                </div>
+                <input class="input-r" placeholder="Buscar" type="text" class="form-control">
+              </div>
+        </div>
+    </div>
+    <div class="ms-auto pe-3">
+        <li class="nav-item active">
+            <a class="nav-link color-text" routerLink="/">
+                <img src="https://i.pinimg.com/1200x/6d/1e/39/6d1e39f5ba8d8615e4b1a27acc9379a4.jpg" width="50" height="50" alt="">
+                Contactanos
+            </a>
+        </li>
+    </div>
+    <div class="ms-auto pe-3">
+        <li class="nav-item active">
+            <a class="nav-link color-text" routerLink="/login">
+                <img class="rounded-5" src="data:image/png;base64,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" width="50" height="50" alt="">
+            </a>
+        </li>
+    </div>
+    <div class="ms-auto pe-3">
+        <li class="nav-item active">
+            <a class="nav-link color-text" routerLink="/">
+                <img class="rounded-5" src="https://e7.pngegg.com/pngimages/290/416/png-clipart-online-shopping-retail-handbag-others-miscellaneous-retail-thumbnail.png" width="50" height="50" alt="">
+            </a>
+        </li>
     </div>
 </nav>

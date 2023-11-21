@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Frontend';
 
-  constructor() {
+  constructor(private modal: NgbModal) {
 
   }
 }

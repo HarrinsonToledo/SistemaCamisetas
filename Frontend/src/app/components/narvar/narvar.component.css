@@ -1,3 +1,21 @@
 .redimen {
     height: 150px;
+    background-color: black !important;
+}
+
+.wi {
+    width: 50em;
+}
+
+.mover {
+    padding-left: 1%;
+}
+
+.color-text {
+    color: white;
+    text-align: center;
+}
+
+.input-r {
+    border-radius: 20px !important;
 }

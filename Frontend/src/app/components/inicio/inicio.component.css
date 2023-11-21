@@ -1,0 +1,55 @@
+.redi-img {
+    width: 280px;
+    height: 310px;
+}
+
+h2 {
+    margin-top: 1%;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+}
+
+.panel {
+    width: 36.4%;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    height: 30em;
+    margin-top: 1%;
+    margin-right: 2%;
+}
+
+.catalogo {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 130%;
+    height: 36em;
+    margin-top: 1%;
+    margin-left: auto;
+}
+
+.catalogo::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.catalogo::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.pspacing {
+    margin: 2%;
+    width: 18rem; 
+}
+
+.btn {
+    width: 100%;
+}

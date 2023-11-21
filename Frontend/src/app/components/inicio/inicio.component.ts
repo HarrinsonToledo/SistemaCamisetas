@@ -7,9 +7,11 @@ import { UserService } from 'src/app/services/usuario.service';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent {
+  rango: number[];
+
   roles!: Array<any>
   constructor(private user: UserService) {
-
+    this.rango = Array.from({ length: 12}, (_,i) => i + 1)
   }
 
   ngOnInit() {
