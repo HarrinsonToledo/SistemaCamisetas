@@ -23,4 +23,13 @@ export class LoginComponent {
       Password: ['', Validators.required]
     })
   }
+
+  login() {
+    const login: any = {
+      User: this.Formulario.value.User,
+      Password: this.Formulario.value.Password
+    } 
+
+    console.log(login)
+  }
 }

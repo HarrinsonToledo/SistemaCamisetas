@@ -1,4 +1,4 @@
-<form class="needs-validation" id="Formulario" novalidate [formGroup]="F">
+<form class="needs-validation" id="Formulario" novalidate [formGroup]="Formulario">
   <div class="container">
     <div class="links">
       <a routerLink="/login" class="link">¡Ya tengo una cuenta!</a>
@@ -14,6 +14,6 @@
     <img src="https://cdn.icon-icons.com/icons2/37/PNG/512/password_3715.png" class="icon" alt="icono de contraseña">
     <input type="password" placeholder="Password" formControlName="Password">
   </div>
-  <button [disabled]="!Formulario.valid">Continuar</button>
+  <button [disabled]="!Formulario.valid" (click)="login()">Continuar</button>
 </div>
 </form>
