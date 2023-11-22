@@ -10,6 +10,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomComponent } from './components/custom/custom.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NarvarComponent,
     InicioComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CustomComponent
   ],
   imports: [
     BrowserModule,
