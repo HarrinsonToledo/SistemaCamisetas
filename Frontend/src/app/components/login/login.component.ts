@@ -45,6 +45,6 @@ export class LoginComponent {
 
   logout() {
     this.loginState.deleteCookie();
-    this.Usuario = ""
+    this.Usuario = "";
   }
 }
