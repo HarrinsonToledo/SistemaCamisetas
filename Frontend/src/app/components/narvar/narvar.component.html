@@ -68,16 +68,24 @@
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Precio</th>
+                    <th scope="col">Cantidad</th>
                     <th scope="col">Cancelar</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let i of rango">
-                    <th scope="row">{{i}}</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                  <tr *ngFor="let i of rows">
+                    <th scope="row">{{i.datos[0]}}</th>
+                    <td>{{i.datos[1]}}</td>
+                    <td>${{i.datos[2]}},00</td>
                     <td>
-                        <button class="btn btn-danger" (click)="cambiarPrecio(i)">&times;</button>
+                        <div style="display: flex; text-align: center;">
+                        <button class="btn btn-outline-success" (click)="decreCantidad(i)"><</button>
+                        <p class="mx-2 h5">{{i.cantidad}}</p>
+                        <button class="btn btn-outline-success" (click)="increCantidad(i)">></button>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteItem(i)">&times;</button>
                     </td>
                   </tr>
                 </tbody>

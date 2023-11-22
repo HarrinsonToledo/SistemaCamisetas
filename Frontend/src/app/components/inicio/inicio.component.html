@@ -4,17 +4,17 @@
 
     </div>
     <div class="catalogo">
-        <div *ngFor="let i of rango" class="card pspacing">
+        <div *ngFor="let i of listado" class="card pspacing">
             <img src="https://files.cdn.printful.com/o/upload/bfl-image/50/10170_l_idontwant.jpg" class="card-img-top redi-img" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Camiseta Corta</h5>
+              <h5 class="card-title">{{i[1]}}</h5>
               <p class="card-text">Colección de Verano.</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">$ 0.0000</li>
+                <li class="list-group-item">$ {{i[2]}},00</li>
             </ul>
             <div class="card-body">
-                <a href="#" class="btn bg-success text-white">Añadir +</a>
+                <a href="#" class="btn bg-success text-white" (click)="addCamisaItem(i)">Añadir +</a>
             </div>
           </div>
     </div>

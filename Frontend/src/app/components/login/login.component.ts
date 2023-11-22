@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as Notiflix from 'notiflix';
+import { UserService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
   Formulario!: FormGroup;
 
-  constructor(private form: FormBuilder) {
+  constructor(private form: FormBuilder, private user: UserService) {
 
   }
 
@@ -19,17 +21,12 @@ export class LoginComponent {
 
   crearFormLogin() {
     this.Formulario = this.form.group({
-      User: ['', Validators.required],
+      Email: ['', Validators.email],
       Password: ['', Validators.required]
     })
   }
 
   login() {
-    const login: any = {
-      User: this.Formulario.value.User,
-      Password: this.Formulario.value.Password
-    } 
-
-    console.log(login)
+    this.user.login(this.Formulario.value.Email, this.Formulario.value.Password);
   }
 }
