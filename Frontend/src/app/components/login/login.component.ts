@@ -41,10 +41,10 @@ export class LoginComponent {
 
   login() {
     this.user.login(this.Formulario.value.Email, this.Formulario.value.Password);
-    this.Usuario = this.cookieService.get('user');
   }
 
   logout() {
     this.loginState.deleteCookie();
+    this.Usuario = ""
   }
 }
