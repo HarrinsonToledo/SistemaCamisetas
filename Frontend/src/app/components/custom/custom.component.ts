@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-custom',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
 })
 
 export class CustomComponent {
-
+  selectedStamp: string = 'stamp1';
 }
