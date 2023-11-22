@@ -1,4 +1,4 @@
-<form class="needs-validation" id="Formulario" novalidate [formGroup]="Formulario">
+<form class="needs-validation" id="Formulario" novalidate [formGroup]="Formulario" *ngIf="!logining.getState()">
   <div class="container">
     <div class="links">
       <a routerLink="/login" class="link">¡Ya tengo una cuenta!</a>
@@ -17,3 +17,7 @@
   <button [disabled]="!Formulario.valid" (click)="login()">Continuar</button>
 </div>
 </form>
+<div class="container" *ngIf="logining.getState()">
+  <h3>Bienvenido {{Usuario}}!!</h3>
+  <button class="btn btn-danger" (click)="logout()">Salir - Log Out</button>
+</div>

@@ -5,7 +5,7 @@
     </div>
     <div class="catalogo">
         <div *ngFor="let i of listado" class="card pspacing">
-            <img src="https://files.cdn.printful.com/o/upload/bfl-image/50/10170_l_idontwant.jpg" class="card-img-top redi-img" alt="...">
+            <img src={{i[4]}} class="card-img-top redi-img" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{i[1]}}</h5>
               <p class="card-text">Colección de Verano.</p>

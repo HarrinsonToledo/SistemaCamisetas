@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as Notiflix from 'notiflix';
 import { environment } from 'src/environments/environment.development';
+import { LoginState } from '../interfaces/LoginState';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class UserService {
   private propeties: string
   private log: string
 
-  constructor() { 
+  constructor(private loginState: LoginState) { 
     this.myApiUrl = environment.endpoint;
     this.propeties = '/user';
     this.log = '/login'
@@ -45,8 +46,11 @@ export class UserService {
         } else if (data.statusCode == 201) {
           Notiflix.Loading.remove();
           Notiflix.Notify.success("Usuario Logueado"); 
+          console.log(data.user[0].nombre)
+          this.loginState.createCookie(data.user[0].nombre, login.correo)
+          this.loginState.setLoginState()
         } else {
-          console.log(data) 
+          console.log(data)
         }
       })
       .catch((err) => {
