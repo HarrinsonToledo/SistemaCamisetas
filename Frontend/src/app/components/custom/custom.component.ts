@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import * as Notiflix from 'notiflix';
+import { CarritoContainer } from 'src/app/interfaces/CarritoContainer';
+import { Modelos } from 'src/app/interfaces/Modelos';
+import { ModelosServices } from 'src/app/services/modelos.service';
 
 @Component({
   selector: 'app-custom',
@@ -8,5 +12,53 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class CustomComponent {
-  selectedStamp: string = 'stamp1';
+  listado: Array<any>;
+  datos!: Array<any>;
+
+  roles!: Array<any>
+  constructor(private carrito:CarritoContainer, private modeloService: ModelosServices, private modelos: Modelos) {
+    this.listado = [];
+    /**Array.from({ length: 12}, (_,i) => i + 1) */
+  }
+
+  formatearNumero(numeroString: string): string {
+    // Convertir el string a número para asegurarse de que es un número válido
+    const numero = parseFloat(numeroString);
+
+    // Verificar si el número es válido
+    if (isNaN(numero)) {
+        return "Número no válido";
+    }
+
+    // Formatear el número con el punto de mil y ",00"
+    const numeroFormateado = numero.toLocaleString('es-ES', {
+      minimumFractionDigits: numero % 1 !== 0 ? 2 : 0,
+      maximumFractionDigits: numero % 1 !== 0 ? 2 : 0
+  });
+
+    return `${numeroFormateado} COP`;
+}
+
+  ngOnInit() {
+    this.cargar();
+  }
+
+  async cargar() {
+    await this.modeloService.getModelos();
+
+    this.datos = this.modelos.getDatos();
+
+    if(this.datos != null || this.datos != undefined) {
+      for(let i = 0; i < this.datos.length; i++) {
+        let precio = String(this.datos[i].precio);
+        this.listado.push([this.datos[i].id, this.datos[i].modelo,
+          this.formatearNumero(precio), this.datos[i].precio, this.datos[i].url]);
+      }
+    }
+  }
+
+  addCamisaItem(item: Array<any>) {
+    Notiflix.Notify.success(item[1]+"Añadido")
+    this.carrito.addItem(item)
+  }
 }

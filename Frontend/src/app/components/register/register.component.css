@@ -6,8 +6,8 @@ body {
 }
 
 .container {
-    width: 500px;
-    height: 550px;
+    width: 550px;
+    height: 650px;
     padding: 30px;
     background-color: #f0f0f0;
     border: 1px solid #999;
@@ -22,6 +22,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 100px;
 }
 
 .link {
@@ -47,7 +48,7 @@ body {
     border: 1px solid #999;
     padding: 8px;
     margin-bottom: 16px;
-    width: 50%;
+    width: 70%;
 }
 
 .input-container img {
@@ -70,5 +71,4 @@ button {
     border-radius: 4px;
     text-align: center;
     margin-top: 30px;
-    margin-bottom: 30px;
 }
