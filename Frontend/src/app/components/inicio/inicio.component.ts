@@ -14,10 +14,11 @@ export class InicioComponent {
   listado: Array<any>;
   datos!: Array<any>;
 
+  G: string = "Completo";
+
   roles!: Array<any>
   constructor(private carrito: CarritoContainer, private modeloService: ModelosServices, private modelos: Modelos) {
     this.listado = [];
-    /**Array.from({ length: 12}, (_,i) => i + 1) */
   }
 
   formatearNumero(numeroString: string): string {
@@ -35,7 +36,7 @@ export class InicioComponent {
       maximumFractionDigits: numero % 1 !== 0 ? 2 : 0
   });
 
-    return `${numeroFormateado} COP`;
+    return `${numeroFormateado}`;
 }
 
   ngOnInit() {
@@ -50,8 +51,12 @@ export class InicioComponent {
     if(this.datos != null || this.datos != undefined) {
       for(let i = 0; i < this.datos.length; i++) {
         let precio = String(this.datos[i].precio);
+        let genero = "Hombre";
+        if(this.datos[i].modelo.includes("Mujer")){
+          genero = "Mujer"
+        }
         this.listado.push([this.datos[i].id, this.datos[i].modelo,
-          this.formatearNumero(precio), this.datos[i].precio, this.datos[i].url]);
+          this.formatearNumero(precio), this.datos[i].precio, this.datos[i].url, "Sin info", genero]);
       }
     }
   }
@@ -59,5 +64,15 @@ export class InicioComponent {
   addCamisaItem(item: Array<any>) {
     Notiflix.Notify.success(item[1] + " Añadido")
     this.carrito.addItem(item)
+  }
+
+  mostrar(tipo: string) {
+    if(tipo == 'c') {
+      this.G = "Completo";
+    } else if(tipo == 'h') {
+      this.G = "Hombre";
+    } else if(tipo == 'm') {
+      this.G = "Mujer";
+    }
   }
 }

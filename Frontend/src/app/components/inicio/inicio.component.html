@@ -1,21 +1,33 @@
 <h2>Nuestros productos</h2>
 <div class="container">
     <div class="panel">
-
+        <ul class="navbar-nav">
+            <li class="nav-item h5" (click)="mostrar('c')">
+                <a class="nav-link" >Colección Completa</a>
+            </li>
+            <li class="nav-item h5" (click)="mostrar('h')">
+                <a class="nav-link" >Colección Hombre</a>
+            </li>
+            <li class="nav-item h5" (click)="mostrar('m')">
+                <a class="nav-link" >Colección Mujer</a>
+            </li>
+        </ul>
     </div>
     <div class="catalogo">
-        <div *ngFor="let i of listado" class="card pspacing">
-            <img src={{i[4]}} class="card-img-top redi-img" width="100%" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{i[1]}}</h5>
-              <p class="card-text">Colección de Verano.</p>
+        <div *ngFor="let i of listado" style="margin: auto;">
+            <div class="card pspacing" *ngIf="i[6] == G || G == 'Completo'">
+                <img src={{i[4]}} class="card-img-top redi-img" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{i[1]}}</h5>
+                <p class="card-text">A tu gusto.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">$ {{i[2]}},00</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="btn bg-success text-white" (click)="addCamisaItem(i)">Añadir +</a>
+                </div>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">$ {{i[2]}},00</li>
-            </ul>
-            <div class="card-body">
-                <a href="#" class="btn bg-success text-white" (click)="addCamisaItem(i)">Añadir +</a>
             </div>
-          </div>
     </div>
 </div>
