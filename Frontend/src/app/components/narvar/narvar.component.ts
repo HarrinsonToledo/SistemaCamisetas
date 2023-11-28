@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as Notiflix from 'notiflix';
 import { ArrayCarrito, CarritoContainer } from 'src/app/interfaces/CarritoContainer';
+import { LoginState } from 'src/app/interfaces/LoginState';
 
 @Component({
   selector: 'app-narvar',
@@ -12,7 +14,7 @@ export class NarvarComponent {
   rows!: Array<ArrayCarrito>;
   valorTotal: number = 0
 
- constructor(public modal: NgbModal, private carrito: CarritoContainer) {
+ constructor(public modal: NgbModal, private carrito: CarritoContainer, private login: LoginState, private root: Router) {
   this.rows = carrito.getCarrito();
  }
 
@@ -60,5 +62,14 @@ export class NarvarComponent {
   this.rows = this.rows.filter(prod => prod != i);
   Notiflix.Notify.success("Producto " + i.datos[1] + " eleminada")
   this.updateWindow()
+ }
+
+ pagar() {
+  if(this.login.getState()) {
+
+  } else {
+    Notiflix.Notify.warning("No te has iniciado sesión");
+    this.root.navigate(['/login']);
+  }
  }
 }
