@@ -1,0 +1,51 @@
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="payment-container">
+                    <h2 class="text-center mb-4">Detalles de Pago</h2>
+                    <form>
+                        <div class="items">
+                            <label for="">Los items comprados son:</label><br>
+                            <label for="">k</label>
+                            
+                        </div><br>
+                            <div class="form-group">
+                            <label for="id">Cédula</label>
+                            <input type="text" class="form-control" placeholder="Número de identidad" id="cardNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nombres</label>
+                            <input type="text" class="form-control" placeholder="Nombres" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Apellidos</label>
+                            <input type="text" class="form-control" placeholder="Apellidos" id="lastname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Medio de pago</label>
+                            <div class="payment-option">
+                                <input type="radio" id="tarjeta" name="medioPago" value="tarjeta">
+                                <label for="tarjeta">Tarjeta Débito/Crédito</label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="PSE" name="medioPago" value="PSE">
+                                <label for="PSE">PSE</label>
+                            </div>
+                            
+                            <div class="payment-option">
+                                <input type="radio" id="PayPal" name="medioPago" value="PayPal">
+                                <label for="PayPal">PayPal</label>
+                            </div>
+                            
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-pagar">Pagar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

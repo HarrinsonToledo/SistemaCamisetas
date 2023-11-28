@@ -5,12 +5,14 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CustomComponent } from './components/custom/custom.component';
+import { PagoComponent } from './pago/pago.component';
 
 const routes : Routes = [
   {path:'', component:InicioComponent},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
-  {path:'custom', component:CustomComponent}
+  {path:'custom', component:CustomComponent},
+  {path:'pago', component:PagoComponent}
 ]
 
 @NgModule({

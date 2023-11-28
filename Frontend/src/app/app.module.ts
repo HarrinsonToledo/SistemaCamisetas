@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CustomComponent } from './components/custom/custom.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PagoComponent } from './pago/pago.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InicioComponent,
     LoginComponent,
     RegisterComponent,
-    CustomComponent
+    CustomComponent,
+    PagoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+.container {
+    margin-top: 50px;
+}
+
+.payment-container {
+    background-color: #eee;
+    border: 1px solid #999;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.btn-pagar {
+    background-color: #008000;
+    color: white;
+}
+
+button:hover {
+    background-color: #043004;
+}
