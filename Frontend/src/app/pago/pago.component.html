@@ -4,7 +4,7 @@
             <div class="col-md-6">
                 <div class="payment-container">
                     <h2 class="text-center mb-4">Detalles de Pago</h2>
-                    <form class="needs-validation" id="Formulario" novalidate >
+                    <form class="needs-validation" id="Formulario" novalidate [formGroup]="Formulario">
                         <div>
                             <label for="">Los items comprados son:</label>
                             <ul>
@@ -16,29 +16,29 @@
                         <br>
                         <div class="form-group">
                             <label for="id">Cédula</label>
-                            <input type="text" class="form-control" placeholder="Número de identidad" id="cardNumber" required>
+                            <input type="number" formControlName="Cedula" class="form-control" placeholder="Número de identidad" id="cardNumber">
                         </div>
                         <div class="form-group">
                             <label for="name">Nombres</label>
-                            <input type="text" class="form-control" placeholder="Nombres" id="name" required>
+                            <input type="text" formControlName="Nombres" class="form-control" placeholder="Nombres" id="name">
                         </div>
                         <div class="form-group">
                             <label for="lastname">Apellidos</label>
-                            <input type="text" class="form-control" placeholder="Apellidos" id="lastname" required>
+                            <input type="text" formControlName="Apellidos" class="form-control" placeholder="Apellidos" id="lastname">
                         </div>
                         <div class="form-group d-flex justify-content-between">
                             <div class="payment-option">
                                 <label for="">Medio de pago</label>
                                 <div>
-                                    <input type="radio" id="tarjeta" name="medioPago" value="tarjeta">
+                                    <input formControlName="MedioPago" type="radio" id="tarjeta" name="MedioPago" value="tarjeta">
                                     <label for="tarjeta">Tarjeta Débito/Crédito</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="PSE" name="medioPago" value="PSE">
+                                    <input formControlName="MedioPago" type="radio" id="PSE" name="MedioPago" value="PSE">
                                     <label for="PSE">PSE</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="PayPal" name="medioPago" value="PayPal">
+                                    <input formControlName="MedioPago" type="radio" id="PayPal" name="MedioPago" value="PayPal">
                                     <label for="PayPal">PayPal</label>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                         </div>
                         
                         <div class="text-center">
-                            <button type="submit" class="btn btn-pagar">Pagar</button>
+                            <button type="submit" [disabled]="!Formulario.valid" class="btn btn-pagar" (click)="pagar()">Pagar</button>
                         </div>                  
                     </form>
                 </div>
