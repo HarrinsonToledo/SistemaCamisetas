@@ -1,65 +1,83 @@
-<body>
-    <div class="container">
-      <div class="left-panel">
-        <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png"
-                class="thumbnail" id="img1" alt="Imagen 1">
-            <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png"
-                class="thumbnail" id="img2" alt="Imagen 2">
-            <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png"
-                class="thumbnail" id="img3" alt="Imagen 3">
-      </div>
-      <div class="center-panel">
-        <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png" id="mainImage" alt="Imagen Principal">
-      </div>
-      <div class="right-panel">
-        <h3>¡Personaliza tu camiseta!</h3>
-        <h5>Diseñador: Pepito Pérez</h5>
-  
-        <div class="options-container">
-          <div class="size-options">
-            <h5>Tallas:</h5>
-            <div class="size-buttons">
-              <button class="size-button" (click)="selectedSize = '12'">12</button>
-              <button class="size-button" (click)="selectedSize = '14'">14</button>
-              <button class="size-button" (click)="selectedSize = '16'">16</button>
-              <button class="size-button" (click)="selectedSize = 'XS'">XS</button>
-              <button class="size-button" (click)="selectedSize = 'S'">S</button>
-              <button class="size-button" (click)="selectedSize = 'M'">M</button>
-              <button class="size-button" (click)="selectedSize = 'L'">L</button>
-            </div>
-          </div>
-  
-          <div class="color-options">
-            <h5>Colores:</h5>
-                <div class="color-buttons">
-                    <button class="color-button" style="background-color: red;"></button>
-                    <button class="color-button" style="background-color: blue;"></button>
-                    <button class="color-button" style="background-color: green;"></button>
-                    <button class="color-button" style="background-color: yellow;"></button>
-                    <button class="color-button" style="background-color: purple;"></button>
-                    <button class="color-button" style="background-color: orange;"></button>
-                    <button class="color-button" style="background-color: pink;"></button>
-                </div>
-          </div>
+<div class="container">
+  <div class="left-panel">
+    <img src="https://i.pinimg.com/236x/87/31/2c/87312cf103bcb93862672799fdbdf9bf.jpg" class="thumbnail" id="img1" alt="Estampa 1">
+    <img src="https://i.pinimg.com/236x/24/0d/98/240d98c7f69c2830aab925c5b41acda1.jpg" class="thumbnail" id="img2" alt="Estampa 2">
+    <img src="https://i.pinimg.com/236x/fb/d2/09/fbd209d7982e48c53049aab48fe38825.jpg" class="thumbnail" id="img3" alt="Estampa 3">
+  </div>
+
+  <div class="center-panel">
+    <img src="https://i.pinimg.com/236x/87/31/2c/87312cf103bcb93862672799fdbdf9bf.jpg" id="mainImage" alt="Imagen Principal">
+  </div>
+
+  <div class="right-panel">
+    <h3>¡Personaliza tu camiseta!</h3>
+    <h5>Diseñador: Pepito Pérez</h5>
+
+    <div class="options-container">
+      <div class="size-options">
+        <h5>Tallas:</h5>
+        <div class="size-buttons">
+          <button class="size-button" [ngStyle]="{'border': selectedSize === '12' ? '2px solid black' : 'none'}" (click)="selectedSize = '12'">12</button>
+          <button class="size-button" [ngStyle]="{'border': selectedSize === '14' ? '2px solid black' : 'none'}" (click)="selectedSize = '14'">14</button>
+          <button class="size-button" [ngStyle]="{'border': selectedSize === '16' ? '2px solid black' : 'none'}" (click)="selectedSize = '16'">16</button>
+          <button class="size-button" [ngStyle]="{'border': selectedSize === 'XS' ? '2px solid black' : 'none'}" (click)="selectedSize = 'XS'">XS</button>
+          <button class="size-button" [ngStyle]="{'border': selectedSize === 'S' ? '2px solid black' : 'none'}" (click)="selectedSize = 'S'">S</button>
+          <button class="size-button" [ngStyle]="{'border': selectedSize === 'M' ? '2px solid black' : 'none'}" (click)="selectedSize = 'M'">M</button>
+          <button class="size-button" [ngStyle]="{'border': selectedSize === 'L' ? '2px solid black' : 'none'}" (click)="selectedSize = 'L'">L</button>
         </div>
-        
-        <div class="options-container">
-          <div class="diseño">
-            <label for="stampSelection">Estampado:</label>
-            <select id="stampSelection" [(ngModel)]="selectedStamp">
-              <option value="stamp1">Estampa 1</option>
-              <option value="stamp2">Estampa 2</option>
-              <option value="stamp3">Estampa 3</option>
-            </select>
-          </div>
-        </div>
-        <div class="precio">Precio: <strong>{{ selectedItem?.precio | currency:'COP':true }}</strong></div>
-        <button class="btn btn-custom-green" (click)="addCamisa()">Añadir</button>
-  
-        <div *ngIf="!selectedItem">
-          <p class="mensaje-seleccion">Por favor, selecciona una camiseta.</p>
+      </div>
+
+      <div class="color-options">
+        <h5>Colores:</h5>
+        <div class="color-buttons">
+          <button class="color-button red" [ngClass]="{'selected-button': selectedColor === 'red'}" (click)="selectedColor = 'red'"></button>
+          <button class="color-button blue" [ngClass]="{'selected-button': selectedColor === 'blue'}" (click)="selectedColor = 'blue'"></button>
+          <button class="color-button green" [ngClass]="{'selected-button': selectedColor === 'green'}" (click)="selectedColor = 'green'"></button>
+          <button class="color-button yellow" [ngClass]="{'selected-button': selectedColor === 'yellow'}" (click)="selectedColor = 'yellow'"></button>
+          <button class="color-button purple" [ngClass]="{'selected-button': selectedColor === 'purple'}" (click)="selectedColor = 'purple'"></button>
+          <button class="color-button orange" [ngClass]="{'selected-button': selectedColor === 'orange'}" (click)="selectedColor = 'orange'"></button>
+          <button class="color-button pink" [ngClass]="{'selected-button': selectedColor === 'pink'}" (click)="selectedColor = 'pink'"></button>
         </div>
       </div>
     </div>
-  </body>
-  
+
+    <div class="options-container">
+      <div class="diseño">
+        <label for="stampSelection">Estampado:</label>
+        <select id="stampSelection" [(ngModel)]="selectedStamp">
+          <option value="stamp1">Estampa 1 (2000 COP)</option>
+          <option value="stamp2">Estampa 2 (3000 COP)</option>
+          <option value="stamp3">Estampa 3 (5000 COP)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="precio">
+      Precio: 
+      <strong>
+        {{
+          formatearNumero(
+            (selectedStamp === 'stamp1' ? 2000 : (selectedStamp === 'stamp2' ? 3000 : 5000)) +
+            (selectedColor === 'red' ? 1000 : (selectedColor === 'blue' ? 1500 : 
+            (selectedColor === 'green' ? 1200 : (selectedColor==='yellow'?1800:
+            (selectedColor === 'purple' ? 1800:(selectedColor === 'orange' ? 1300:
+            (selectedColor === 'pink' ? 900:0))))))) +
+            20000 +
+            ''
+          )
+        }}
+      </strong>
+    </div>
+
+    <button class="btn btn-custom-green" (click)="addCamisa()" [disabled]="!selectedSize || !selectedStamp || !selectedColor"
+  [ngClass]="{'selected-option': selectedSize || selectedStamp || selectedColor}">
+  Añadir
+</button>
+
+
+
+    <div *ngIf="!selectedStamp">
+      <p class="mensaje-seleccion">Por favor, selecciona una camiseta.</p>
+    </div>
+  </div>
+</div>

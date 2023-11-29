@@ -110,3 +110,32 @@ h5 {
     background-color: #008000;
     color: white;
 }
+.selected-button {
+    border: 2px solid black;
+    /* Ajusta el fondo según tus preferencias */
+  }  
+  .color-button.red {
+    background-color: red; /* Ajusta el fondo para el botón rojo */
+  }
+  
+  .color-button.blue {
+    background-color: blue; /* Ajusta el fondo para el botón azul */
+  }
+  .color-button.green {
+    background-color: green; /* Ajusta el fondo para el botón azul */
+  }
+  .color-button.yellow {
+    background-color: yellow; /* Ajusta el fondo para el botón azul */
+  }
+  .color-button.purple {
+    background-color: purple; /* Ajusta el fondo para el botón azul */
+  }
+  .color-button.orange {
+    background-color: orange; /* Ajusta el fondo para el botón azul */
+  }
+  .color-button.pink {
+    background-color: pink; /* Ajusta el fondo para el botón azul */
+  }
+  
+  
+  

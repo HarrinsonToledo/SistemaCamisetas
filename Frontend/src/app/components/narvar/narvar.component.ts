@@ -34,11 +34,22 @@ export class NarvarComponent {
 
  updateWindow() {
   this.rows = this.carrito.getCarrito();
-  this.valorTotal = 0
+  this.valorTotal = 0;
+
   this.rows.forEach(dato => {
-    this.valorTotal = this.valorTotal + (dato.cantidad * dato.datos[3])
-  })
- }
+    const precioItem = dato.datos[2];
+
+    if (!isNaN(precioItem)) {
+      if (dato.datos[0] === 13) { // Identificador único para camiseta personalizada
+        this.valorTotal += dato.cantidad * precioItem;
+      } else {
+        this.valorTotal += (dato.cantidad * precioItem)*1000;
+      }
+    }
+  });
+}
+
+
 
  openMCenter(contenido: any) {
     this.updateWindow()
@@ -84,7 +95,7 @@ export class NarvarComponent {
     }
     this.router.navigate(['/pago'], { queryParams: { total: valorTotal } });
   } else if(!this.login.getState()) {
-    Notiflix.Notify.warning("No te has iniciado sesión");
+    Notiflix.Notify.warning("No has iniciado sesión");
     if (this.modalRef) {
       this.modalRef.close();
     }

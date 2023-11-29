@@ -9,25 +9,31 @@ import { ModelosServices } from 'src/app/services/modelos.service';
   templateUrl: './custom.component.html',
   styleUrls: ['./custom.component.css']
 })
-
 export class CustomComponent {
   datos!: Array<any>;
-  selectedItem: any;
   selectedSize: string = '';
   selectedStamp: string = '';
+  selectedColor: string = '';
 
   tallas: string[] = ['12', '14', '16', 'XS', 'S', 'M', 'L'];
-  colores: string[] = ['red', 'blue', 'green'];
+  colores: string[] = ['red', 'blue', 'green', 'yellow','purple','orange','pink'];
+  estampas: string[] = ['stamp1', 'stamp2', 'stamp3'];
+
+  precioEstampa: number = 0;
+  precioColor: number = 0;
+  precioTotal: number = 0;
 
   constructor(private carrito: CarritoContainer, private modeloService: ModelosServices, private modelos: Modelos) {
-    this.selectedItem = null;
+    this.selectedSize = '';
+    this.selectedStamp = this.estampas[0]; // Establecer la primera estampa por defecto
+    this.selectedColor = this.colores[0]; // Establecer el primer color por defecto
   }
 
   formatearNumero(numeroString: string): string {
     const numero = parseFloat(numeroString);
 
     if (isNaN(numero)) {
-      return "Número no válido";
+      return 'Número no válido';
     }
 
     const numeroFormateado = numero.toLocaleString('es-ES', {
@@ -35,7 +41,7 @@ export class CustomComponent {
       maximumFractionDigits: numero % 1 !== 0 ? 2 : 0
     });
 
-    return `${numeroFormateado} COP`;
+    return `${numeroFormateado}`;
   }
 
   ngOnInit() {
@@ -45,27 +51,75 @@ export class CustomComponent {
   }
 
   seleccionarItem(item: any) {
-    this.selectedItem = item;
-    this.selectedSize = this.tallas[0]; 
-    this.selectedStamp = this.colores[0]; 
+    this.selectedSize = this.tallas[0];
+    this.selectedStamp = this.estampas[0];
+    this.selectedColor = this.colores[0];
   }
 
   addCamisa() {
-    if (this.selectedItem != null && this.selectedSize != '' && this.selectedStamp != '') {
-      const { id, modelo, precio, url } = this.selectedItem;
-      const precioFormateado = this.formatearNumero(String(precio));
-      const camisa = [id, modelo, precioFormateado, precio, url, [this.selectedSize, this.selectedStamp], ""];
-      Notiflix.Notify.success(`${modelo} Añadido`);
-      this.carrito.addItem(camisa);
-      this.resetSelections(); 
+    if (this.selectedSize !== '' && this.selectedStamp !== '' && this.selectedColor !== '') {
+      this.calcularPrecios();
+      const precioTotal = this.precioEstampa + this.precioColor+20000;
+  
+      const camisaDatos = [13, 'Camiseta personalizada', precioTotal, 1, [this.selectedSize, this.selectedStamp, this.selectedColor]];
+  
+      Notiflix.Notify.success('Camiseta personalizada añadida al carrito');
+      this.carrito.addItem(camisaDatos);
+  
+      this.resetSelections();
     } else {
-      Notiflix.Notify.failure("Por favor, selecciona un artículo, talla y estampa antes de añadirlo al carrito.");
+      Notiflix.Notify.failure('Por favor, selecciona talla, color y estampa antes de añadir al carrito.');
+    }
+  }
+  
+  
+
+  calcularPrecios() {
+    switch (this.selectedStamp) {
+      case 'stamp1':
+        this.precioEstampa = 2000;
+        break;
+      case 'stamp2':
+        this.precioEstampa = 3000;
+        break;
+      case 'stamp3':
+        this.precioEstampa = 5000;
+        break;
+      default:
+        break;
+    }
+
+    switch (this.selectedColor) {
+      case 'red':
+        this.precioColor = 1000;
+        break;
+      case 'blue':
+        this.precioColor = 1500;
+        break;
+      case 'green':
+        this.precioColor = 1200;
+        break;
+      case 'yellow':
+        this.precioColor = 800;
+        break
+      case 'purple':
+        this.precioColor = 1800;
+        break
+      case 'orange':
+        this.precioColor = 1300;
+        break
+      case 'pink':
+        this.precioColor = 900;
+        break
+      default:
+        break;
     }
   }
 
   resetSelections() {
-    this.selectedItem = null;
     this.selectedSize = '';
-    this.selectedStamp = '';
+    this.selectedStamp = this.estampas[0];
+    this.selectedColor = this.colores[0];
   }
 }
+
