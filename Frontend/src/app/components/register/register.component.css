@@ -7,7 +7,7 @@ body {
 
 .container {
     width: 550px;
-    height: 650px;
+    height: 100%;
     padding: 30px;
     background-color: #f0f0f0;
     border: 1px solid #999;
@@ -22,7 +22,6 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 100px;
 }
 
 .link {
@@ -71,4 +70,8 @@ button {
     border-radius: 4px;
     text-align: center;
     margin-top: 30px;
+}
+
+button:hover {
+    background-color: #043004;
 }
