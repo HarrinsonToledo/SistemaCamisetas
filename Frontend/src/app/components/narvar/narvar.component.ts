@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
 import * as Notiflix from 'notiflix';
 import { ArrayCarrito, CarritoContainer } from 'src/app/interfaces/CarritoContainer';
 import { LoginState } from 'src/app/interfaces/LoginState';
@@ -12,11 +13,19 @@ import { LoginState } from 'src/app/interfaces/LoginState';
 })
 export class NarvarComponent {
   rows!: Array<ArrayCarrito>;
-  valorTotal: number = 0
+  valorTotal: number = 0;
+
   private modalRef!: NgbModalRef;
 
- constructor(public modal: NgbModal, private router: Router, private carrito: CarritoContainer, private login: LoginState, private root: Router) {
+ constructor(public modal: NgbModal, private router: Router, private carrito: CarritoContainer, private login: LoginState, private root: Router,
+  private cookieService: CookieService) {
   this.rows = carrito.getCarrito();
+
+    if(cookieService.check('user')) {
+      login.setLoginState()
+    } else {
+      login.logOut()
+    }
  }
 
  ngOnInit() {
@@ -70,8 +79,11 @@ export class NarvarComponent {
     Notiflix.Notify.warning("No hay productos en tu carrito a pagar");
   } else if(this.login.getState()) {
     const valorTotal = this.valorTotal;
+    if (this.modalRef) {
+      this.modalRef.close();
+    }
     this.router.navigate(['/pago'], { queryParams: { total: valorTotal } });
-  } else {
+  } else if(!this.login.getState()) {
     Notiflix.Notify.warning("No te has iniciado sesión");
     if (this.modalRef) {
       this.modalRef.close();

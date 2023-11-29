@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import * as Notiflix from 'notiflix';
 import { CarritoContainer } from 'src/app/interfaces/CarritoContainer';
+import { LoginState } from 'src/app/interfaces/LoginState';
 import { Modelos } from 'src/app/interfaces/Modelos';
 import { ModelosServices } from 'src/app/services/modelos.service';
 import { UserService } from 'src/app/services/usuario.service';
@@ -17,8 +19,14 @@ export class InicioComponent {
   G: string = "Completo";
 
   roles!: Array<any>
-  constructor(private carrito: CarritoContainer, private modeloService: ModelosServices, private modelos: Modelos) {
+  constructor(private carrito: CarritoContainer, private modeloService: ModelosServices, private modelos: Modelos, private loginState: LoginState,
+    private cookieService: CookieService) {
     this.listado = [];
+    if(cookieService.check('user')) {
+      loginState.setLoginState()
+    } else {
+      loginState.logOut()
+    }
   }
 
   formatearNumero(numeroString: string): string {

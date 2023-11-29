@@ -51,10 +51,10 @@ export class CustomComponent {
   }
 
   addCamisa() {
-    if (this.selectedItem && this.selectedSize && this.selectedStamp) {
+    if (this.selectedItem != null && this.selectedSize != '' && this.selectedStamp != '') {
       const { id, modelo, precio, url } = this.selectedItem;
       const precioFormateado = this.formatearNumero(String(precio));
-      const camisa = [id, modelo, this.selectedSize, this.selectedStamp, precioFormateado, precio, url];
+      const camisa = [id, modelo, precioFormateado, precio, url, [this.selectedSize, this.selectedStamp], ""];
       Notiflix.Notify.success(`${modelo} Añadido`);
       this.carrito.addItem(camisa);
       this.resetSelections(); 

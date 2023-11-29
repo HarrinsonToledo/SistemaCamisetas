@@ -9,6 +9,7 @@ import { PagoComponent } from './pago/pago.component';
 
 const routes : Routes = [
   {path:'', component:InicioComponent},
+  {path:'inicio', component:InicioComponent},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
   {path:'custom', component:CustomComponent},
