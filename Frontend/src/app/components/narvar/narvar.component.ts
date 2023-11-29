@@ -15,7 +15,7 @@ export class NarvarComponent {
   valorTotal: number = 0
   private modalRef!: NgbModalRef;
 
- constructor(public modal: NgbModal, private carrito: CarritoContainer, private login: LoginState, private root: Router) {
+ constructor(public modal: NgbModal, private router: Router, private carrito: CarritoContainer, private login: LoginState, private root: Router) {
   this.rows = carrito.getCarrito();
  }
 
@@ -69,7 +69,8 @@ export class NarvarComponent {
   if(this.rows == undefined || this.rows == null || this.rows.length == 0) {
     Notiflix.Notify.warning("No hay productos en tu carrito a pagar");
   } else if(this.login.getState()) {
-    this.root.navigate(['/pago']);
+    const valorTotal = this.valorTotal;
+    this.router.navigate(['/pago'], { queryParams: { total: valorTotal } });
   } else {
     Notiflix.Notify.warning("No te has iniciado sesión");
     if (this.modalRef) {

@@ -1,56 +1,65 @@
 <body>
     <div class="container">
-        <div class="left-panel">
-            <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png" class="thumbnail" id="img1" alt="Imagen 1">
-            <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png" class="thumbnail" id="img2" alt="Imagen 2">
-            <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png" class="thumbnail" id="img3" alt="Imagen 3">
-        </div>
-        <div class="center-panel">
-            <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png" id="mainImage" alt="Imagen Principal">
-        </div>
-        <div class="right-panel">
-            <h3>Camiseta uno</h3>
-            <h5>Diseñador: Pepito Pérez</h5>
-
-            <div class="options-container">
-                <div class="size-options">
-                    <h5>Tallas:</h5>
-                    <div class="size-buttons">
-                        <button class="size-button">12</button>
-                        <button class="size-button">14</button>
-                        <button class="size-button">16</button>
-                        <button class="size-button">XS</button>
-                        <button class="size-button">S</button>
-                        <button class="size-button">M</button>
-                        <button class="size-button">L</button>
-                    </div>
-                </div>
-
-                <div class="color-options">
-                    <h5>Colores:</h5>
-                    <div class="color-buttons">
-                        <button class="color-button" style="background-color: red;"></button>
-                        <button class="color-button" style="background-color: blue;"></button>
-                        <button class="color-button" style="background-color: green;"></button>
-                        <button class="color-button" style="background-color: yellow;"></button>
-                        <button class="color-button" style="background-color: purple;"></button>
-                        <button class="color-button" style="background-color: orange;"></button>
-                        <button class="color-button" style="background-color: pink;"></button>
-                    </div>
-                </div>
+      <div class="left-panel">
+        <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png"
+                class="thumbnail" id="img1" alt="Imagen 1">
+            <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png"
+                class="thumbnail" id="img2" alt="Imagen 2">
+            <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png"
+                class="thumbnail" id="img3" alt="Imagen 3">
+      </div>
+      <div class="center-panel">
+        <img src="https://www.sanduxml.com/wp-content/uploads/2021/11/ei_1636039813222-removebg-preview.png" id="mainImage" alt="Imagen Principal">
+      </div>
+      <div class="right-panel">
+        <h3>Camiseta uno</h3>
+        <h5>Diseñador: Pepito Pérez</h5>
+  
+        <div class="options-container">
+          <div class="size-options">
+            <h5>Tallas:</h5>
+            <div class="size-buttons">
+              <button class="size-button" (click)="selectedSize = '12'">12</button>
+              <button class="size-button" (click)="selectedSize = '14'">14</button>
+              <button class="size-button" (click)="selectedSize = '16'">16</button>
+              <button class="size-button" (click)="selectedSize = 'XS'">XS</button>
+              <button class="size-button" (click)="selectedSize = 'S'">S</button>
+              <button class="size-button" (click)="selectedSize = 'M'">M</button>
+              <button class="size-button" (click)="selectedSize = 'L'">L</button>
             </div>
-            <div class="options-container">
-                <div class="diseño">
-                    <label for="stampSelection">Estampado:</label>
-                    <select id="stampSelection">
-                        <option value="stamp1">Estampa 1</option>
-                        <option value="stamp2">Estampa 2</option>
-                        <option value="stamp3">Estampa 3</option>
-                    </select>
+          </div>
+  
+          <div class="color-options">
+            <h5>Colores:</h5>
+                <div class="color-buttons">
+                    <button class="color-button" style="background-color: red;"></button>
+                    <button class="color-button" style="background-color: blue;"></button>
+                    <button class="color-button" style="background-color: green;"></button>
+                    <button class="color-button" style="background-color: yellow;"></button>
+                    <button class="color-button" style="background-color: purple;"></button>
+                    <button class="color-button" style="background-color: orange;"></button>
+                    <button class="color-button" style="background-color: pink;"></button>
                 </div>
-            </div>
-            <p class="precio">Precio: <strong>$45.000</strong></p>
-            <button class="btn btn-custom-green">Añadir</button>
+          </div>
         </div>
+        
+        <div class="options-container">
+          <div class="diseño">
+            <label for="stampSelection">Estampado:</label>
+            <select id="stampSelection" [(ngModel)]="selectedStamp">
+              <option value="stamp1">Estampa 1</option>
+              <option value="stamp2">Estampa 2</option>
+              <option value="stamp3">Estampa 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="precio">Precio: <strong>{{ selectedItem?.precio | currency:'COP':true }}</strong></div>
+        <button class="btn btn-custom-green" (click)="addCamisa()">Añadir</button>
+  
+        <div *ngIf="!selectedItem">
+          <p class="mensaje-seleccion">Por favor, selecciona una camiseta.</p>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
+  

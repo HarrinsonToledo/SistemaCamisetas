@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import * as Notiflix from 'notiflix';
 import { CarritoContainer } from 'src/app/interfaces/CarritoContainer';
 import { Modelos } from 'src/app/interfaces/Modelos';
@@ -12,53 +11,61 @@ import { ModelosServices } from 'src/app/services/modelos.service';
 })
 
 export class CustomComponent {
-  listado: Array<any>;
   datos!: Array<any>;
+  selectedItem: any;
+  selectedSize: string = '';
+  selectedStamp: string = '';
 
-  roles!: Array<any>
-  constructor(private carrito:CarritoContainer, private modeloService: ModelosServices, private modelos: Modelos) {
-    this.listado = [];
-    /**Array.from({ length: 12}, (_,i) => i + 1) */
+  tallas: string[] = ['12', '14', '16', 'XS', 'S', 'M', 'L'];
+  colores: string[] = ['red', 'blue', 'green'];
+
+  constructor(private carrito: CarritoContainer, private modeloService: ModelosServices, private modelos: Modelos) {
+    this.selectedItem = null;
   }
 
   formatearNumero(numeroString: string): string {
-    // Convertir el string a número para asegurarse de que es un número válido
     const numero = parseFloat(numeroString);
 
-    // Verificar si el número es válido
     if (isNaN(numero)) {
-        return "Número no válido";
+      return "Número no válido";
     }
 
-    // Formatear el número con el punto de mil y ",00"
     const numeroFormateado = numero.toLocaleString('es-ES', {
       minimumFractionDigits: numero % 1 !== 0 ? 2 : 0,
       maximumFractionDigits: numero % 1 !== 0 ? 2 : 0
-  });
+    });
 
     return `${numeroFormateado} COP`;
-}
-
-  ngOnInit() {
-    this.cargar();
   }
 
-  async cargar() {
-    await this.modeloService.getModelos();
+  ngOnInit() {
+    this.modeloService.getModelos().then(() => {
+      this.datos = this.modelos.getDatos();
+    });
+  }
 
-    this.datos = this.modelos.getDatos();
+  seleccionarItem(item: any) {
+    this.selectedItem = item;
+    this.selectedSize = this.tallas[0]; 
+    this.selectedStamp = this.colores[0]; 
+  }
 
-    if(this.datos != null || this.datos != undefined) {
-      for(let i = 0; i < this.datos.length; i++) {
-        let precio = String(this.datos[i].precio);
-        this.listado.push([this.datos[i].id, this.datos[i].modelo,
-          this.formatearNumero(precio), this.datos[i].precio, this.datos[i].url]);
-      }
+  addCamisa() {
+    if (this.selectedItem && this.selectedSize && this.selectedStamp) {
+      const { id, modelo, precio, url } = this.selectedItem;
+      const precioFormateado = this.formatearNumero(String(precio));
+      const camisa = [id, modelo, this.selectedSize, this.selectedStamp, precioFormateado, precio, url];
+      Notiflix.Notify.success(`${modelo} Añadido`);
+      this.carrito.addItem(camisa);
+      this.resetSelections(); 
+    } else {
+      Notiflix.Notify.failure("Por favor, selecciona un artículo, talla y estampa antes de añadirlo al carrito.");
     }
   }
 
-  addCamisaItem(item: Array<any>) {
-    Notiflix.Notify.success(item[1]+"Añadido")
-    this.carrito.addItem(item)
+  resetSelections() {
+    this.selectedItem = null;
+    this.selectedSize = '';
+    this.selectedStamp = '';
   }
 }
